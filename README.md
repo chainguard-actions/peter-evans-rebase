@@ -1,5 +1,7 @@
 # peter-evans/rebase
 
+A GitHub action to rebase pull requests in a repository
+
 Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/peter-evans/rebase](https://github.com/peter-evans/rebase).
 
 ## Versions
