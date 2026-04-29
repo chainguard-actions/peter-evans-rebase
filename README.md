@@ -1,6 +1,12 @@
 # peter-evans/rebase
 
-Hardened GitHub Action by [Chainguard](https://www.chainguard.dev).
+Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/peter-evans/rebase](https://github.com/peter-evans/rebase).
+
+## Versions
+
+| Version | Tag | Upstream commit |
+|---------|-----|-----------------|
+| v4.0.0 | [`v4.0.0`](https://github.com/chainguard-actions/rebase/tree/v4.0.0) | — |
 
 ## Privacy
 
