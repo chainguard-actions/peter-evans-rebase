@@ -6,9 +6,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v4.0.0 | [`v4.0.0`](https://github.com/chainguard-actions/peter-evans-rebase/tree/v4.0.0) | [`e494578`](https://github.com/peter-evans/rebase/commit/e4945786f7ca41fe6e101cead4395f5489593943) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v4.0.0 | [`v4.0.0`](https://github.com/chainguard-actions/peter-evans-rebase/tree/v4.0.0) | [`e494578`](https://github.com/peter-evans/rebase/commit/e4945786f7ca41fe6e101cead4395f5489593943) | [`HARDENING.md`](https://github.com/chainguard-actions/peter-evans-rebase/blob/v4.0.0/HARDENING.md) |
 
 ## Privacy
 
