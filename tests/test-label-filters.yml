@@ -1,0 +1,35 @@
+name: Test label, base and draft filters
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          repository: peter-evans/rebase
+          base: nonexistent-base-branch-act-test-xyz
+          include-labels: |
+            act-test-nonexistent-label-1
+            act-test-nonexistent-label-2
+          exclude-labels: do-not-rebase, act-test-excluded
+          exclude-drafts: true
+          rebase-options: -Xtheirs
+      - name: Assert success with no rebase performed
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          COUNT: ${{ steps.action.outputs.rebased-count }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "rebased-count: '$COUNT'"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected success"
+            exit 1
+          fi
+          if [ -n "$COUNT" ]; then
+            echo "FAIL: expected no rebased-count output when no PRs match"
+            exit 1
+          fi
+          echo "PASS"
