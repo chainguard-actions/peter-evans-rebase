@@ -1,0 +1,35 @@
+name: Test base and label filters with no matches
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          repository: peter-evans/rebase
+          base: actionchain-nonexistent-base-zz9
+          include-labels: |
+            actionchain-label-a
+            actionchain-label-b
+          exclude-labels: do-not-rebase,wip
+          exclude-drafts: true
+          rebase-options: -Xtheirs
+      - name: Assert no rebase happened
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          COUNT: ${{ steps.action.outputs.rebased-count }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "rebased-count: '$COUNT'"
+          if [ "$OUTCOME" != "success" ]; then
+            echo "FAIL: expected success"
+            exit 1
+          fi
+          if [ -n "$COUNT" ]; then
+            echo "FAIL: expected no rebased-count output when no PRs match"
+            exit 1
+          fi
+          echo "PASS"

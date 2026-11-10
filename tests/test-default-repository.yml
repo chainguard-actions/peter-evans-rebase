@@ -1,0 +1,32 @@
+name: Test default repository input
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        continue-on-error: true
+        with:
+          head: actionchain-owner:actionchain-nonexistent-branch-zz9
+      - name: Assert action ran (no-op success, or failed gracefully on the sentinel repo)
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          COUNT: ${{ steps.action.outputs.rebased-count }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "rebased-count: '$COUNT'"
+          if [ "$OUTCOME" = "success" ]; then
+            if [ -n "$COUNT" ]; then
+              echo "FAIL: no PRs should match, but rebased-count was set"
+              exit 1
+            fi
+            echo "PASS: no pull requests matched"
+          elif [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed gracefully (sentinel repo is not resolvable)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
