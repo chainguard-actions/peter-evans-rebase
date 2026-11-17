@@ -4,8 +4,13 @@
   "version": "v4.1.1",
   "commit_sha": "d6f70ba4beda4faa44e582a974ec3b7b40713951",
   "url": "https://github.com/peter-evans/rebase",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/peter-evans/rebase/v4.1.1/sha256-1c1ca5a658b7b4b3e97d201a693a844885af2b07e5e9e1efdfc037134ae9a0f8.tar.gz",
+    "sha256": "1c1ca5a658b7b4b3e97d201a693a844885af2b07e5e9e1efdfc037134ae9a0f8",
+    "size_bytes": 251261
+  }
 }
